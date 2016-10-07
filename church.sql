@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2016 at 12:49 PM
+-- Generation Time: Oct 07, 2016 at 03:10 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -28,12 +28,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `books` (
   `books_id` int(11) NOT NULL,
-  `book_name` varchar(50) NOT NULL,
+  `book_name` varchar(200) NOT NULL,
   `book_description` text NOT NULL,
   `book_image_url` text NOT NULL,
   `book_author` varchar(50) NOT NULL,
   `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`books_id`, `book_name`, `book_description`, `book_image_url`, `book_author`, `date_updated`) VALUES
+(1, 'Leadership Pitfalls: Mistakes Every Leader Must Avoid', 'Leadership is not for the perfect but for the imperfect persons who are willing to learn from the mistakes of others and ensure they put safeguards that will protect them from falling into the traps that have hindered other leaders from success. The author has identified the most common leadership pitfalls that have been the cause of many leadership failures before. This book serves as a reminder and a warning at the sane time of areas that leaders are vulnerable and hence the need to protect themselves in order to succeed and make a difference. The book is enriched with the author''s personal experiences thus making it a "ready-made meal" for every leader who desires to do exploits in their area of leadership.\r\n', 'images/patrick_book.jpg', 'Patrick M. Nyaga', '2016-10-07 13:07:09');
 
 -- --------------------------------------------------------
 
@@ -59,7 +66,7 @@ CREATE TABLE `contact_info` (
 --
 
 INSERT INTO `contact_info` (`id`, `company_name`, `location`, `website`, `mobile`, `office`, `email`, `about_us`, `logo`, `date_updated`) VALUES
-(1, 'Church', 'Nairobi, Kenya', 'www.church.co.ke', '0713126689', '0713126689', 'info@safarisbyjayne.com', 'We are a team of professional Safari Consultants, with over 23 years working experience in various capacities in East Africa’s Tourism Industry; and have an understanding, clear knowledge and great passion for travel in Africa.\n\nWe use our creativity to design exciting, memorable holiday packages for families and groups; each specially tailored to suit individual interest, budget, style and specifically addressing what YOU want out of the experience. To us, this means offering unique, unforgettable traditional safaris covering magnificent wildlife, unspoiled sceneries and colorful people of Kenya and beyond – truly bound to touch your soul forever.\n\nWe are committed to working closely with the local communities to promote conservation and sustainable management of the magnificent wildlife, and local cultures within the areas in which we operate.', '', '2016-09-12 00:00:00');
+(1, 'Church', 'P.O BOX 7175-00300Nairobi, Kenya', 'www.church.co.ke', '0713126689', '0713126689', 'pmnyagah@gmail.com', 'We are a team of professional Safari Consultants, with over 23 years working experience in various capacities in East Africa’s Tourism Industry; and have an understanding, clear knowledge and great passion for travel in Africa.\n\nWe use our creativity to design exciting, memorable holiday packages for families and groups; each specially tailored to suit individual interest, budget, style and specifically addressing what YOU want out of the experience. To us, this means offering unique, unforgettable traditional safaris covering magnificent wildlife, unspoiled sceneries and colorful people of Kenya and beyond – truly bound to touch your soul forever.\n\nWe are committed to working closely with the local communities to promote conservation and sustainable management of the magnificent wildlife, and local cultures within the areas in which we operate.', '', '2016-09-12 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -74,6 +81,38 @@ CREATE TABLE `devotion` (
   `devotion_url` text NOT NULL,
   `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `event_id` int(11) NOT NULL,
+  `event_name` varchar(50) NOT NULL,
+  `event_time` varchar(50) NOT NULL,
+  `event_description` text NOT NULL,
+  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `events`
+--
+
+INSERT INTO `events` (`event_id`, `event_name`, `event_time`, `event_description`, `date_updated`) VALUES
+(1, 'Abigael''s', '', 'Every 3rd Sunday of the Month', '2016-10-07 12:44:42'),
+(2, 'Destiny Achievers', '', 'Every 3rd Sunday of the Month', '2016-10-07 12:44:42'),
+(3, 'Youth Meeting', '', 'Every 2nd Sunday of the Month', '2016-10-07 12:47:02'),
+(4, 'Sunday Service', '10:00 - 12:30 ', 'Every week', '2016-10-07 12:47:02'),
+(5, 'School of Ministry', '08:00 - 09:15 ', 'Every Sunday', '2016-10-07 12:48:26'),
+(6, ' Prayers', '09:15 - 10:00a.m', 'Every Sunday', '2016-10-07 12:50:31'),
+(7, 'Mid-Week Services ', '5:45p.m - 7:30p.m ', 'Every Wednesday', '2016-10-07 12:50:31'),
+(8, 'Prayer Service ', '5:45p.m - 7:30p.m ', 'Every Friday', '2016-10-07 12:52:47'),
+(9, 'Teenagers Sunday School', '09:30a.m - 10:00a.m ', 'Every Sunday', '2016-10-07 12:52:47'),
+(10, 'Sunday School', '10:00a.m - 1:00p.m ', 'Every Sunday', '2016-10-07 12:53:47'),
+(11, 'Kingdom Tv', '10:05p.m - 10:35p.m ', 'Every Saturday', '2016-10-07 12:55:42'),
+(12, 'Kingdom Tv(Repeat)', '10:40p.m - 11:20p.m ', 'Every Monday', '2016-10-07 12:55:42');
 
 -- --------------------------------------------------------
 
@@ -152,6 +191,12 @@ ALTER TABLE `devotion`
   ADD PRIMARY KEY (`devotion_id`);
 
 --
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`event_id`);
+
+--
 -- Indexes for table `sliders`
 --
 ALTER TABLE `sliders`
@@ -171,7 +216,7 @@ ALTER TABLE `verses`
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `books_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `books_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `contact_info`
 --
@@ -182,6 +227,11 @@ ALTER TABLE `contact_info`
 --
 ALTER TABLE `devotion`
   MODIFY `devotion_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `sliders`
 --
